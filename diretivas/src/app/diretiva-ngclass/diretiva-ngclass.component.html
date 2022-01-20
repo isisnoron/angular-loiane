@@ -1,0 +1,13 @@
+<h3>ngClass</h3>
+<h5>Não usando ngClass: </h5>
+<h4>
+    <i (click)="getCurtir()" [class.bi-star]="!meuFavorito" [class.bi-star-fill]="meuFavorito"></i>
+</h4>
+
+<h5>Usando ngClass: </h5>
+<h4>
+    <i (click)="getCurtir()" [ngClass]="{
+        'bi-star': !meuFavorito,
+        'bi-star-fill': meuFavorito
+    }"></i>
+</h4>

@@ -10,3 +10,13 @@
 <h5>Hidden como alternativa</h5>
 <div [hidden]="!mostrarCursos">Lista de Cursos</div>
 <div [hidden]="mostrarCursos">Não existem cursos para serem listados.</div>
+
+<h5>Removendo o * e usando template</h5>
+<!-- <div *ngIf="cursos.length > 0" >Lista de Cursos</div> -->
+
+<!-- <template [ngIf]="mostrarCursos"> 
+<div>Lista de Cursos</div>
+</template>
+
+<div template="ngIf mostrarCursos" >Lista de Cursos</div>  -->
+ 
