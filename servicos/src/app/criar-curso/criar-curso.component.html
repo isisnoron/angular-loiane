@@ -1,0 +1,10 @@
+<h1>Criando services com injeção de dependência</h1>
+
+<input type="text" #cursoInput> <!-- cursoInput é uma variavel local -->
+<button (click)="onAddCurso(cursoInput.value)">Add curso</button>
+
+<ul>
+    <li *ngFor="let curso of cursos" > {{ curso }} </li>
+</ul>
+
+<app-receber-curso-criado></app-receber-curso-criado> 
