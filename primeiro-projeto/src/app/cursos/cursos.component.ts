@@ -19,7 +19,7 @@ export class CursosComponent implements OnInit {
     //   let curso = this.cursos[i]; 
     // }
 
-
+ 
    }
  
 
