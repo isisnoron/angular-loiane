@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CursosService } from '../cursos/cursos.service';
+import { CursosService } from '../cursos.service';
 
 @Component({
   selector: 'app-curso-detalhe',
@@ -14,7 +14,6 @@ export class CursoDetalheComponent implements OnInit {
   // inscricao!: Subscription;   ou
   inscricao: Subscription = new Subscription;
   
-
   constructor(private route: ActivatedRoute, 
     private cursosService: CursosService,
     private router: Router) {
@@ -24,7 +23,7 @@ export class CursoDetalheComponent implements OnInit {
   ngOnInit(): void {
     this.inscricao = this.route.params.subscribe(
       (params:any) => {
-        this.id = params['id'];
+        this.id = params['id']
 
         this.curso = this.cursosService.getCurso(this.id)
         if (this.curso == null){
