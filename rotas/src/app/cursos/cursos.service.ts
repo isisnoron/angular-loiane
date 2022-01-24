@@ -5,18 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class CursosService {
 
-  getCursos(){
+  getCursos() {
     return [
-      {id: 1, nome: 'Angular 2'},
-      {id: 2, nome: 'Java'}
+      { id: 1, nome: 'Angular 2' },
+      { id: 2, nome: 'Java' }
     ]
   }
 
-  getCurso(id: number){
+  getCurso(id: number) {
     let cursos = this.getCursos()
-    for (let i = 0; i<cursos.length; i++){
+    for (let i = 0; i < cursos.length; i++) {
       let curso = cursos[i];
-      if (curso.id == id){
+      if (curso.id == id) {
         return curso;
       }
     }

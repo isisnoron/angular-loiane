@@ -1,36 +1,37 @@
 <mat-toolbar class="header mat-elevation-z4">
-  <span>
-      <a routerLink="/">
-          Logo
-      </a>
-  </span>
+    <span>
+        <a routerLink="/">
+            Logo
+        </a>
+    </span>
 
 </mat-toolbar>
 <mat-sidenav-container class="container">
-  <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
-      <mat-nav-list class="nav-list">
-          <a mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
-              <i class="material-icons">
-                  home
-              </i> Login
-          </a>
-          <a mat-list-item [routerLink]="['/cursos']" routerLinkActive="router-link-active">
-              <i class="material-icons">
-                  school
-              </i> Cursos
-          </a>
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item [routerLink]="['/login']" routerLinkActive="router-link-active">
+                <i class="material-icons">
+                    home
+                </i> Login
+            </a>
+            <a mat-list-item [routerLink]="['/cursos']" [queryParams]="{pagina:1}"
+                routerLinkActive="router-link-active">
+                <i class="material-icons">
+                    school
+                </i> Cursos
+            </a>
 
-          <a mat-list-item [routerLink]="['curso', idCurso.value]" routerLinkActive="router-link-active">
-            <i class="material-icons">
-                school
-            </i> Curso com Id
-        </a>
+            <a mat-list-item [routerLink]="['curso', idCurso.value]" routerLinkActive="router-link-active">
+                <i class="material-icons">
+                    school
+                </i> Curso com Id
+            </a>
 
-      </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content class="content">
-    <p>Entre com o id do Curso</p>
-    <input #idCurso (input)="0">
-      <router-outlet></router-outlet>
-  </mat-sidenav-content>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <p>Entre com o id do Curso</p>
+        <input #idCurso (input)="0">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
 </mat-sidenav-container>

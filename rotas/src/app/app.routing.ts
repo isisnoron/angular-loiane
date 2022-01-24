@@ -10,13 +10,12 @@ import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-en
 
 
 const APP_ROUTES: Routes = [
-    {path: 'cursos', component: CursosComponent},
-    {path: 'curso/:id', component: CursoDetalheComponent},
-    {path: 'login', component : LoginComponent},
-    {path: 'naoEncontrado', component: CursoNaoEncontradoComponent},
-    {path: '', component: HomeComponent}
+    { path: 'cursos', component: CursosComponent },
+    { path: 'curso/:id', component: CursoDetalheComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
+    { path: '', component: HomeComponent }
 
 ];
 
-export const routing : ModuleWithProviders<RouterModule> = RouterModule.forRoot(APP_ROUTES);
- 
+export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(APP_ROUTES);
