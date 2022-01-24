@@ -1,1 +1,8 @@
-<p>cursos works!</p>
+<h3>Lista de Cursos</h3>
+<mat-selection-list #shoes>
+    <a>
+        <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]" >
+        {{ curso.nome }}
+        </mat-list-option>
+    </a>
+  </mat-selection-list>  
