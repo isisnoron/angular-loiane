@@ -1,1 +1,10 @@
-<p>alunos works!</p>
+
+<mat-selection-list >
+    <h3>Lista de Alunos</h3>
+    <a>
+        <mat-list-option *ngFor="let aluno of alunos" [routerLink]="[aluno.id]" >
+        {{ aluno.nome }}
+        </mat-list-option>
+    </a>
+</mat-selection-list>
+<router-outlet></router-outlet>
