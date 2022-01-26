@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     //{ path: 'cursos', component: CursosComponent },
-    // { path: 'curso/:id', component: CursoDetalheComponent },
+    //{ path: 'curso/:id', component: CursoDetalheComponent },
     { path: 'login', component: LoginComponent },
     //{ path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
     { path: '', component: HomeComponent }

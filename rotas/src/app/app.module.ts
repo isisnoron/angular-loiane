@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,11 +18,15 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app.routing.module';
 import { CursosModule } from './cursos/cursos.module';
 
+import { AlunosModule } from './alunos/alunos.module';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+ 
     //CursosComponent,
     //CursoDetalheComponent,
     //CursoNaoEncontradoComponent
@@ -33,13 +36,15 @@ import { CursosModule } from './cursos/cursos.module';
     BrowserAnimationsModule,
     //routing,
     CursosModule,
+    AlunosModule,
     AppRoutingModule,
     MatSidenavModule,
     MatSliderModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    FormsModule
 
   ],
   //providers: [CursosService],
