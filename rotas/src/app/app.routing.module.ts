@@ -10,8 +10,8 @@ import { HomeComponent } from './home/home.component';
 //import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso-nao-encontrado.component';
 
 const appRoutes: Routes = [
-    //{ path: 'cursos', component: CursosComponent },
-    //{ path: 'curso/:id', component: CursoDetalheComponent },
+    { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule)},
+    { path: 'alunos', loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)},  
     { path: 'login', component: LoginComponent },
     //{ path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
     { path: '', component: HomeComponent }

@@ -2,11 +2,10 @@
 <p>Página: {{ pagina }} </p>
 <mat-selection-list #shoes>
     <a>
-        <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]" >
-        {{ curso.nome }}
+        <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/cursos', curso.id]">
+            {{ curso.nome }}
         </mat-list-option>
     </a>
-</mat-selection-list>  
+</mat-selection-list>
 
 <button (click)='proximaPagina()'>Prox. Página</button>
-
