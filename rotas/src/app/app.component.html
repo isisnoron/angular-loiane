@@ -14,6 +14,14 @@
                     home
                 </i> Login
             </a>
+
+            <a mat-list-item [routerLink]="['']" routerLinkActive="router-link-active">
+                <i class="material-icons">
+                    home
+                </i> Home
+            </a>
+
+
             <a mat-list-item [routerLink]="['/cursos']" [queryParams]="{pagina:1}"
                 routerLinkActive="router-link-active">
                 <i class="material-icons">
