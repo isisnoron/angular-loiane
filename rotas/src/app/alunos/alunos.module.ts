@@ -11,6 +11,7 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
 import { AlunosDeactiveGuard } from '../guards/alunos-deactivate.guard';
+import { AlunoDetalheResolver } from './guards/aluno-detalhe.resolver';
 
 
 
@@ -25,11 +26,12 @@ import { AlunosDeactiveGuard } from '../guards/alunos-deactivate.guard';
     ],
     exports: [],
     declarations: [
-        AlunosComponent, 
-        AlunoFormComponent, 
+        AlunosComponent,
+        AlunoFormComponent,
         AlunoDetalheComponent
     ],
     providers: [AlunosService,
-    AlunosDeactiveGuard],
+        AlunosDeactiveGuard,
+        AlunoDetalheResolver],
 })
 export class AlunosModule { }
