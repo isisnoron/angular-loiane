@@ -4,7 +4,7 @@
 </mat-form-field>
 <mat-form-field appearance="fill">
     <!-- <mat-label>Textarea</mat-label> -->
-    <input matInput placeholder="Nome" [(ngModel)]="aluno.nome">
+    <input matInput placeholder="Nome" [(ngModel)]="aluno.nome" (input)="onInput()">
 </mat-form-field>
 <mat-form-field appearance="fill">
     <input matInput placeholder="Email" [(ngModel)]="aluno.email">

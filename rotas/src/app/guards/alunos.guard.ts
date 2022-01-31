@@ -10,13 +10,10 @@ export class AlunosGuard implements CanActivateChild {
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
 
-        console.log(route);
-        console.log(state);
-
         if(state.url.includes('editar')){
-            alert('Usuário não autorizado');
+            //alert('Usuário não autorizado');
             // return Observable.of(false);
-            return false;
+           // return false;
         }
 
         return true;
