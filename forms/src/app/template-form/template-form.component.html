@@ -1,9 +1,11 @@
-<mat-form-field appearance="fill">
-    <mat-label>Nome</mat-label>
-    <input matInput>
-</mat-form-field>
-<mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput>
-</mat-form-field>
-<button mat-raised-button color="primary">Submit</button>
+<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput name="nome" ngModel>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" ngModel>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Primary</button>
+</form> 
