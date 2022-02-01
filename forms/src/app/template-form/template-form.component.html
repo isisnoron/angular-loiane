@@ -1,7 +1,10 @@
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
     <mat-form-field appearance="fill">
         <mat-label>Nome</mat-label>
-        <input matInput name="nome" [ngModel]="usuario.nome" required>
+        <input matInput name="nome" [ngModel]="usuario.nome" required #nome>
+        <!-- <div>
+            {{ nome.className }}
+        </div> -->
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
