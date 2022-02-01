@@ -1,14 +1,26 @@
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
-    <mat-form-field appearance="fill">
-        <mat-label>Nome</mat-label>
-        <input matInput name="nome" [ngModel]="usuario.nome" required #nome>
-        <!-- <div>
-            {{ nome.className }}
-        </div> -->
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput name="email" [ngModel]="usuario.email" required email>
-    </mat-form-field>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
+
+        </mat-form-field>
+        <br>
+        <span *ngIf="!nome.valid && nome.touched" class="alert"> Nome é obrigatório.</span>
+
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput name="email" [ngModel]="usuario.email" required email #email="ngModel">
+        </mat-form-field>
+        <br>
+
+        <span *ngIf="!email.valid && email.touched" class="alert"> E-mail inválido.</span>
+    </div>
+
+    <br>
+
     <button mat-raised-button color="primary">Primary</button>
-</form> 
+</form>

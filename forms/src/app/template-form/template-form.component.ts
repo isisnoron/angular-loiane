@@ -12,9 +12,16 @@ export class TemplateFormComponent implements OnInit {
     email: null
   }
 
+  getErrorMessage() {
+    if (this.usuario.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return true
+  }
+
   onSubmit(form:any) {
-    console.log(form.value);
-    console.log(this.usuario);
+    console.log(form);
+    //console.log(this.usuario);
   }
 
 
