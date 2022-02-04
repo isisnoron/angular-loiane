@@ -1,29 +1,74 @@
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Nome</mat-label>
-            <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
+    <mat-grid-list cols="4" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Nome</mat-label>
+                <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
+                <span *ngIf="!nome.valid && nome.touched" class="alert"> Nome é obrigatório.</span>
+            </mat-form-field>
+        </mat-grid-tile>
 
-        </mat-form-field>
-        <br>
-        <span *ngIf="!nome.valid && nome.touched" class="alert"> Nome é obrigatório.</span>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" [ngModel]="usuario.email" required email #email="ngModel">
+                <span *ngIf="!email.valid && email.touched" class="alert"> E-mail inválido.</span>
+            </mat-form-field>
+        </mat-grid-tile>
 
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input matInput name="cep" ngModel required #cep="ngModel">
+                <span *ngIf="!cep.valid && cep.touched" class="alert">CEP é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Número</mat-label>
+                <input matInput name="numero" ngModel required #numero="ngModel">
+                <span *ngIf="!numero.valid && numero.touched" class="alert">Nº é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Rua</mat-label>
+                <input matInput name="rua" ngModel required #rua="ngModel">
+                <span *ngIf="!rua.valid && rua.touched" class="alert">Rua é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Bairro</mat-label>
+                <input matInput name="bairro" ngModel required #bairro="ngModel">
+                <span *ngIf="!bairro.valid && bairro.touched" class="alert">Bairro é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Cidade</mat-label>
+                <input matInput name="cidade" ngModel required #cidade="ngModel">
+                <span *ngIf="!cidade.valid && cidade.touched" class="alert">Cidade é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <input matInput name="estado" ngModel required #estado="ngModel">
+                <span *ngIf="!estado.valid && estado.touched" class="alert">Estado é obrigatório</span>
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <div style="text-align: center;">
+        <button mat-raised-button color="primary" [disabled]='!formulario.valid'>Submit</button>
     </div>
-
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput name="email" [ngModel]="usuario.email" required email #email="ngModel">
-        </mat-form-field>
-        <br>
-
-        <span *ngIf="!email.valid && email.touched" class="alert"> E-mail inválido.</span>
-    </div>
-
-    <br>
-
-    <button mat-raised-button color="primary"
-    [disabled]='!formulario.valid'>Primary</button>
-
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>

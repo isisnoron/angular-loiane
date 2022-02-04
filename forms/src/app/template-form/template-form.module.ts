@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormDebugComponent } from '../form-debug/form-debug.component';
-
+import { MatGridListModule } from '@angular/material/grid-list'
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { FormDebugComponent } from '../form-debug/form-debug.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatGridListModule
   ]
 })
 export class TemplateFormModule { }
