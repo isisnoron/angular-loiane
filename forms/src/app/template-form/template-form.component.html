@@ -16,7 +16,7 @@
             </mat-form-field>
         </mat-grid-tile>
 
-
+        <div ngModelGroup="endereco">
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
@@ -64,6 +64,7 @@
                 <span *ngIf="!estado.valid && estado.touched" class="alert">Estado é obrigatório</span>
             </mat-form-field>
         </mat-grid-tile>
+    </div>
 
     </mat-grid-list>
 
