@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TemplateFormComponent } from './template-form.component';
 import { FormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -24,7 +26,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule
   ]
 })
 export class TemplateFormModule { }

@@ -20,7 +20,8 @@
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
-                <input matInput name="cep" ngModel required #cep="ngModel">
+                <input matInput name="cep" ngModel required #cep="ngModel" 
+                (blur)="consultaCEP(cep.value)">
                 <span *ngIf="!cep.valid && cep.touched" class="alert">CEP é obrigatório</span>
             </mat-form-field>
         </mat-grid-tile>
