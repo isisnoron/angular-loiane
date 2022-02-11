@@ -11,15 +11,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { FormDebugComponent } from '../form-debug/form-debug.component';
 import { MatGridListModule } from '@angular/material/grid-list'
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [TemplateFormComponent, FormDebugComponent],
+  declarations: [TemplateFormComponent],
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,

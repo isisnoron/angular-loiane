@@ -1,1 +1,25 @@
-<p>data-form works!</p>
+<form [formGroup]="formulario">
+    <mat-grid-list cols="4" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+                <!-- <span *ngIf="!nome.valid && nome.touched" class="alert"> Nome é obrigatório.</span> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <!-- <span *ngIf="!email.valid && email.touched" class="alert"> E-mail inválido.</span> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <div style="text-align: center;">
+        <button mat-raised-button color="primary">Submit</button>
+    </div>
+    <app-form-debug [form]="formulario"></app-form-debug>
+</form>
