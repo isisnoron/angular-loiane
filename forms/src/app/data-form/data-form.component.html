@@ -22,7 +22,8 @@
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
-                    <input matInput formControlName="cep">
+                    <input matInput formControlName="cep"
+                    (blur)="consultaCEP()">
                     <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
                         class="alert">CEP é
                         obrigatório </span>
