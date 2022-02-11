@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormDebugComponent } from '../shared/form-debug/form-debug.component';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [DataFormComponent ],
@@ -20,6 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    HttpClientModule,
+    
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
