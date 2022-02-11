@@ -18,12 +18,13 @@
             </mat-form-field>
         </mat-grid-tile>
 
-        <div>
+        <div formGroupName="endereco">
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
                     <input matInput formControlName="cep">
-                    <span *ngIf="!formulario.get('cep').valid && formulario.get('cep').touched" class="alert">CEP é
+                    <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
+                        class="alert">CEP é
                         obrigatório </span>
                     <!-- <span *ngIf="!cep.valid && cep.touched" class="alert">CEP é obrigatório</span> -->
                 </mat-form-field>
@@ -33,7 +34,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Número</mat-label>
                     <input matInput formControlName="numero">
-                    <span *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched"
+                    <span *ngIf="!formulario.get('endereco.numero').valid && formulario.get('endereco.numero').touched"
                         class="alert">numero é obrigatório </span>
                     <!-- <span *ngIf="!numero.valid && numero.touched" class="alert">Nº é obrigatório</span> -->
                 </mat-form-field>
@@ -43,7 +44,8 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Rua</mat-label>
                     <input matInput formControlName="rua">
-                    <span *ngIf="!formulario.get('rua').valid && formulario.get('rua').touched" class="alert">rua é
+                    <span *ngIf="!formulario.get('endereco.rua').valid && formulario.get('endereco.rua').touched"
+                        class="alert">rua é
                         obrigatório </span>
                     <!-- <span *ngIf="!rua.valid && rua.touched" class="alert">Rua é obrigatório</span> -->
                 </mat-form-field>
@@ -53,7 +55,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Bairro</mat-label>
                     <input matInput formControlName="bairro">
-                    <span *ngIf="!formulario.get('bairro').valid && formulario.get('bairro').touched"
+                    <span *ngIf="!formulario.get('endereco.bairro').valid && formulario.get('endereco.bairro').touched"
                         class="alert">bairro é obrigatório </span>
                     <!-- <span *ngIf="!bairro.valid && bairro.touched" class="alert">Bairro é obrigatório</span> -->
                 </mat-form-field>
@@ -63,7 +65,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Cidade</mat-label>
                     <input matInput formControlName="cidade">
-                    <span *ngIf="!formulario.get('cidade').valid && formulario.get('cidade').touched"
+                    <span *ngIf="!formulario.get('endereco.cidade').valid && formulario.get('endereco.cidade').touched"
                         class="alert">cidade é obrigatório </span>
                     <!-- <span *ngIf="!cidade.valid && cidade.touched" class="alert">Cidade é obrigatório</span> -->
                 </mat-form-field>
@@ -73,7 +75,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Estado</mat-label>
                     <input matInput formControlName="estado">
-                    <span *ngIf="!formulario.get('estado').valid && formulario.get('estado').touched"
+                    <span *ngIf="!formulario.get('endereco.estado').valid && formulario.get('endereco.estado').touched"
                         class="alert">estado é obrigatório </span>
                     <!-- <span *ngIf="!estado.valid && estado.touched" class="alert">Estado é obrigatório</span> -->
                 </mat-form-field>

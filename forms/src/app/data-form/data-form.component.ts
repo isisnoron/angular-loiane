@@ -10,12 +10,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataFormComponent implements OnInit {
 
-  formulario:any = FormGroup;
+  formulario: any = FormGroup;
 
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
@@ -27,29 +27,33 @@ export class DataFormComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: [null, [Validators.required, Validators.email]],
-      cep: [null, Validators.required],
-      numero: [null, Validators.required],
-      rua: [null, Validators.required],
-      bairro: [null, Validators.required],
-      cidade: [null, Validators.required],
-      estado: [null, Validators.required]
-    })    
+
+      endereco: this.formBuilder.group({
+
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
+    });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.formulario)
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .pipe(map(res => res))
-    .subscribe(dados => {
-      console.log(dados);
-     // this.formulario.reset();
-    },
-    (error:any) => alert('erro'));
+      .pipe(map(res => res))
+      .subscribe(dados => {
+        console.log(dados);
+        // this.formulario.reset();
+      },
+        (error: any) => alert('erro'));
   }
 
-  resetar(){
+  resetar() {
     this.formulario.reset();
   }
-  
+
 
 }
