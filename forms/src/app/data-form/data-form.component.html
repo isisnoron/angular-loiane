@@ -4,7 +4,7 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-                <!-- <span *ngIf="!nome.valid && nome.touched" class="alert"> Nome é obrigatório.</span> -->
+                <span *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" class="alert">Nome é obrigatório.</span>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -12,7 +12,7 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
-                <!-- <span *ngIf="!email.valid && email.touched" class="alert"> E-mail inválido.</span> -->
+                <span *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="alert">Campo inválido.</span>
             </mat-form-field>
         </mat-grid-tile>
 
