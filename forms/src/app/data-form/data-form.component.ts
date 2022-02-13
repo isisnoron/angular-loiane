@@ -29,7 +29,6 @@ export class DataFormComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
 
       endereco: this.formBuilder.group({
-
         cep: [null, Validators.required],
         numero: [null, Validators.required],
         rua: [null, Validators.required],
@@ -41,14 +40,30 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario)
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-      .pipe(map(res => res))
-      .subscribe(dados => {
-        console.log(dados);
-        // this.formulario.reset();
-      },
-        (error: any) => alert('erro'));
+    if (this.formulario.valid) {
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .pipe(map(res => res))
+        .subscribe(dados => {
+          console.log(dados);
+          // this.formulario.reset();
+        },
+          (error: any) => alert('erro'));
+    } else {
+      console.log('formulario inválido')
+      this.verificaValidacoesForm(this.formulario);
+
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle?.markAsDirty();
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
+      }
+    });
   }
 
   resetar() {
@@ -96,16 +111,18 @@ export class DataFormComponent implements OnInit {
   populaDadosForm(dados: any) {
     this.formulario.patchValue({
       endereco: {
-        cep: dados.cep,
+        // cep: dados.cep,
         rua: dados.logradouro,
         bairro: dados.bairro,
         cidade: dados.localidade,
         estado: dados.uf
       }
     });
-    //this.formulario.get('nome').setValue('Isis');
+    this.formulario.get('nome').setValue('Isis');
   }
 
-  
+
+
+
 
 }

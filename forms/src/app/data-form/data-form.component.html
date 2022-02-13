@@ -4,7 +4,7 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-                <span *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" class="alert">Nome é
+                <span *ngIf="!formulario.get('nome').valid && (formulario.get('nome').touched || formulario.get('nome').dirty)" class="alert">Nome é
                     obrigatório.</span>
             </mat-form-field>
         </mat-grid-tile>
