@@ -13,7 +13,7 @@ import { FormDebugComponent } from '../shared/form-debug/form-debug.component';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [DataFormComponent ],
   imports: [
@@ -22,14 +22,15 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     SharedModule,
     HttpClientModule,
-    
+    MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    
   ]
 })
 export class DataFormModule { }

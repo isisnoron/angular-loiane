@@ -4,7 +4,9 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-                <span *ngIf="!formulario.get('nome').valid && (formulario.get('nome').touched || formulario.get('nome').dirty)" class="alert">Nome é
+                <span
+                    *ngIf="!formulario.get('nome').valid && (formulario.get('nome').touched || formulario.get('nome').dirty)"
+                    class="alert">Nome é
                     obrigatório.</span>
             </mat-form-field>
         </mat-grid-tile>
@@ -22,8 +24,7 @@
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
-                    <input matInput formControlName="cep"
-                    (blur)="consultaCEP()">
+                    <input matInput formControlName="cep" (blur)="consultaCEP()">
                     <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
                         class="alert">CEP é
                         obrigatório </span>
@@ -75,7 +76,10 @@
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>Estado</mat-label>
-                    <input matInput formControlName="estado">
+                    <mat-select formControlName="estado">
+                        <mat-option *ngFor="let estado of estados | async" [value]="estado.sigla">
+                            {{ estado.nome}} </mat-option>
+                    </mat-select>
                     <span *ngIf="!formulario.get('endereco.estado').valid && formulario.get('endereco.estado').touched"
                         class="alert">estado é obrigatório </span>
                     <!-- <span *ngIf="!estado.valid && estado.touched" class="alert">Estado é obrigatório</span> -->
