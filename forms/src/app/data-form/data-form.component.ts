@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadosBr } from '../shared/models/estados-br';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -13,25 +14,21 @@ import { EstadosBr } from '../shared/models/estados-br';
 export class DataFormComponent implements OnInit {
 
   formulario: any = FormGroup;
-  estados: EstadosBr[] = []; 
+  estados: EstadosBr[] = [];
 
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private dropDownService: DropdownService
+    private dropDownService: DropdownService,
+    private cepService: ConsultaCepService
   ) { }
 
   ngOnInit(): void {
 
-    this.estados=[];
+    this.estados = [];
     this.dropDownService.getEstadoBr().subscribe((res: EstadosBr) => {
-    this.estados.push(res)   
-  });
-
-    // this.formulario = new FormGroup({
-    //   nome: new FormControl(null),
-    //   email: new FormControl(null)
-    // })
+      this.estados.push(res)
+    });
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -81,26 +78,12 @@ export class DataFormComponent implements OnInit {
 
   consultaCEP() {
 
-    let cep = this.formulario.get('endereco.cep').value;
+    const cep = this.formulario.get('endereco.cep').value;
 
-    // Nova variável CEP, somente com dígitos
-    cep = cep.replace(/\D/g, '');
-
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      //Valida o formato do CEP.
-      if (validacep.test(cep)) {
-
-        this.resetaDadosForm();
-
-        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-          .pipe(map(dados => dados))
-          .subscribe(dados => this.populaDadosForm(dados));
-      }
+    if (cep != null && cep !== '') {
+      this.cepService.consultaCEP(cep)
+        .pipe(map(dados => dados))
+        .subscribe(dados => this.populaDadosForm(dados));
     }
 
   }
@@ -129,9 +112,5 @@ export class DataFormComponent implements OnInit {
     });
     this.formulario.get('nome').setValue('Isis');
   }
-
-
-
-
 
 }
