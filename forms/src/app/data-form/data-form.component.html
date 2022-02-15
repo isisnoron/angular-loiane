@@ -87,12 +87,27 @@
             </mat-grid-tile>
         </div>
 
+        <div class="form-group">
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Cargo</mat-label>
+                    <mat-select formControlName="cargo" [compareWith]="compararCargos">
+                        <mat-option *ngFor="let cargo of cargos" [value]="cargo">
+                            {{ cargo.desc}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+        </div>
+
+
     </mat-grid-list>
+
 
 
     <div style="text-align: center;">
         <button mat-raised-button color="primary">Submit</button>
         <button type="button" mat-raised-button color="basic" (click)="resetar()">Cancel</button>
+        <button type="button" mat-raised-button color="basic" (click)="setarCargo()">Cargo</button>
     </div>
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>
