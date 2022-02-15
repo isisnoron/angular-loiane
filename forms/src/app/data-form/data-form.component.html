@@ -99,6 +99,16 @@
             </mat-grid-tile>
         </div>
 
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Tecnologias</mat-label>
+                <mat-select multiple formControlName="Tecnologias">
+                    <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">
+                        {{ tecnologia.desc}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+
 
     </mat-grid-list>
 
@@ -106,8 +116,9 @@
 
     <div style="text-align: center;">
         <button mat-raised-button color="primary">Submit</button>
-        <button type="button" mat-raised-button color="basic" (click)="resetar()">Cancel</button>
-        <button type="button" mat-raised-button color="basic" (click)="setarCargo()">Cargo</button>
+        <button class="btn btn-default" mat-raised-button color="basic" (click)="resetar()">Cancel</button>
+        <button class="btn btn-info" mat-raised-button color="accent" (click)="setarCargo()">Cargo</button>
+        <button class="btn btn-info" mat-raised-button color="accent" (click)="setarTecnologias()">Tecnologias</button>
     </div>
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>
