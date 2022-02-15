@@ -1,3 +1,7 @@
 .alert{
     color: red;
 }
+
+.checkbox, .btn{
+    margin: 12px;
+  }

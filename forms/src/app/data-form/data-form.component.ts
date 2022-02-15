@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -18,7 +18,9 @@ export class DataFormComponent implements OnInit {
   estados!: Observable<EstadosBr[]>
   cargos: any[] = [];
   tecnologias: any[] = [];
-  newsletterOp: any[] = []
+  newsletterOp: any[] = [];
+  // frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
+  frameworks: string[] = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private http: HttpClient,
@@ -49,13 +51,32 @@ export class DataFormComponent implements OnInit {
 
       cargo: [null],
       tecnologias: [null],
-      newsletter: ['s']
+      newsletter: ['s'],
+      termos: [null, Validators.pattern('true')],
+      // ou termos: [null, Validators.requiredTrue]
+      frameworks: this.buildFrameworks()
     });
   }
 
+  buildFrameworks() {
+    const values = this.frameworks.map(v => new FormControl(false))
+    return this.formBuilder.array(values)
+  }
+
   onSubmit() {
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+      .map((v:any, i:any) => v ? this.frameworks[i] : null)
+      .filter((v:any) => v !== null)
+            
+    })
+
+    console.log(valueSubmit)
+
     if (this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .pipe(map(res => res))
         .subscribe(dados => {
           console.log(dados);
@@ -65,7 +86,6 @@ export class DataFormComponent implements OnInit {
     } else {
       console.log('formulario inválido')
       this.verificaValidacoesForm(this.formulario);
-
     }
   }
 
@@ -93,7 +113,6 @@ export class DataFormComponent implements OnInit {
         .pipe(map(dados => dados))
         .subscribe(dados => this.populaDadosForm(dados));
     }
-
   }
 
   resetaDadosForm() {
@@ -133,5 +152,4 @@ export class DataFormComponent implements OnInit {
   setarTecnologias() {
     this.formulario.get('tecnologias').setValue(['java', 'php', 'ruby'])
   }
-
 }

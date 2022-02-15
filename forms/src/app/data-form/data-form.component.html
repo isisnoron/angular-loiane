@@ -102,7 +102,7 @@
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>Tecnologias</mat-label>
-                <mat-select multiple formControlName="Tecnologias">
+                <mat-select multiple formControlName="tecnologias">
                     <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">
                         {{ tecnologia.desc}} </mat-option>
                 </mat-select>
@@ -118,15 +118,41 @@
             </mat-radio-group>
         </mat-grid-tile>
 
+        <section class="form-group">
+            <mat-grid-tile>
+                <mat-checkbox class="example-margin" formControlName="termos">Aceito os termos.</mat-checkbox>
+                <!-- <span
+                    *ngIf="!formulario.get('termos').valid"
+                    class="alert">Nome é
+                    obrigatório.</span> -->
+            </mat-grid-tile>
+        </section>
+
+        <!-- <section class="form-group">
+            <mat-grid-tile>
+                <h4>Select your frameworks:</h4>
+                <mat-checkbox formArrayName="frameworks"
+                *ngFor="let item of formulario.get('frameworks')['controls']; let i = index;"></mat-checkbox>
+              </mat-grid-tile>
+        </section> -->
+        <mat-grid-tile class="checkbox" colspan="4"> 
+            <div class="checkbox"  formArrayName="frameworks"
+                *ngFor="let item of formulario.get('frameworks')['controls']; let i = index">
+                <mat-checkbox type="checkbox" [formControlName]="i"> {{ frameworks[i] }} </mat-checkbox>
+
+            </div>
+        </mat-grid-tile>
+
+
     </mat-grid-list>
 
-
-
+    <!-- <mat-card-actions style="text-align: center;"> -->
     <div style="text-align: center;">
         <button mat-raised-button color="primary">Submit</button>
         <button class="btn btn-default" mat-raised-button color="basic" (click)="resetar()">Cancel</button>
         <button class="btn btn-info" mat-raised-button color="accent" (click)="setarCargo()">Cargo</button>
         <button class="btn btn-info" mat-raised-button color="accent" (click)="setarTecnologias()">Tecnologias</button>
     </div>
+<!-- </mat-card-actions> -->
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>

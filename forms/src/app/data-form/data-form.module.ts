@@ -15,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [DataFormComponent ],
   imports: [
@@ -31,8 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
-    MatRadioModule
-    
+    MatRadioModule,
+    MatCheckboxModule    
   ]
 })
 export class DataFormModule { }
