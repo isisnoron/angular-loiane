@@ -109,6 +109,14 @@
             </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile>
+            <mat-label>Newsletter</mat-label>
+            <mat-radio-group aria-label="Select an option" formControlName="newsletter">
+                <div *ngFor="let item of newsletterOp">
+                    <mat-radio-button [value]="item.valor"> {{ item.desc}} </mat-radio-button>
+                </div>
+            </mat-radio-group>
+        </mat-grid-tile>
 
     </mat-grid-list>
 

@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { FormDebugComponent } from '../shared/form-debug/form-debug.component';
 import { MatGridListModule } from '@angular/material/grid-list'
@@ -30,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
+    MatRadioModule
     
   ]
 })
