@@ -21,13 +21,10 @@
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
                     <input matInput formControlName="cep" (blur)="consultaCEP()">
-                    <mat-error> Campo obrigatório</mat-error>
+                    <mat-error *ngIf="formulario.get('endereco.cep').hasError('required')"> Campo obrigatório</mat-error>
+                    <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')" class="alert">CEP inválido.
+                    </span>
 
-                    <!-- <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
-                        class="alert">CEP é obrigatório </span>
-                        <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')"                     
-                        class="alert">CEP inválido. </span> -->
-                    
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -36,7 +33,7 @@
                     <mat-label>Número</mat-label>
                     <input matInput formControlName="numero">
                     <mat-error> Campo obrigatório</mat-error>
-                  </mat-form-field>
+                </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile>
@@ -53,7 +50,7 @@
                     <input matInput formControlName="bairro">
                     <!-- <span *ngIf="!formulario.get('endereco.bairro').valid && formulario.get('endereco.bairro').touched"
                         class="alert">bairro é obrigatório </span> -->
-                        <mat-error> Campo obrigatório</mat-error>
+                    <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -111,7 +108,7 @@
         <section class="form-group">
             <mat-grid-tile>
                 <mat-checkbox class="example-margin" formControlName="termos">Aceito os termos.</mat-checkbox>
-                <mat-error *ngIf="!formulario.get('termos').valid"> Campo obrigatório!</mat-error>                       
+                <mat-error *ngIf="!formulario.get('termos').valid"> Campo obrigatório!</mat-error>
             </mat-grid-tile>
         </section>
 
