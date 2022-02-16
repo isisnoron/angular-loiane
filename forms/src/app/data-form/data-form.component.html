@@ -128,19 +128,13 @@
             </mat-grid-tile>
         </section>
 
-        <!-- <section class="form-group">
-            <mat-grid-tile>
-                <h4>Select your frameworks:</h4>
-                <mat-checkbox formArrayName="frameworks"
-                *ngFor="let item of formulario.get('frameworks')['controls']; let i = index;"></mat-checkbox>
-              </mat-grid-tile>
-        </section> -->
         <mat-grid-tile class="checkbox" colspan="4"> 
             <div class="checkbox"  formArrayName="frameworks"
                 *ngFor="let item of formulario.get('frameworks')['controls']; let i = index">
                 <mat-checkbox type="checkbox" [formControlName]="i"> {{ frameworks[i] }} </mat-checkbox>
-
+               
             </div>
+            <span *ngIf="!formulario.get('frameworks').valid" class="alert"> Selecione uma opção.</span>
         </mat-grid-tile>
 
 
