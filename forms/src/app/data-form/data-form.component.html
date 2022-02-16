@@ -4,10 +4,7 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-                <span
-                    *ngIf="!formulario.get('nome').valid && (formulario.get('nome').touched || formulario.get('nome').dirty)"
-                    class="alert">Nome é
-                    obrigatório.</span>
+                <mat-error> Campo obrigatório</mat-error>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -15,8 +12,7 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
-                <span *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="alert">Campo
-                    inválido.</span>
+                <mat-error> Campo obrigatório</mat-error>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -25,10 +21,13 @@
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
                     <input matInput formControlName="cep" (blur)="consultaCEP()">
-                    <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
-                        class="alert">CEP é
-                        obrigatório </span>
-                    <!-- <span *ngIf="!cep.valid && cep.touched" class="alert">CEP é obrigatório</span> -->
+                    <mat-error> Campo obrigatório</mat-error>
+
+                    <!-- <span *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched"
+                        class="alert">CEP é obrigatório </span>
+                        <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')"                     
+                        class="alert">CEP inválido. </span> -->
+                    
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -36,20 +35,15 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Número</mat-label>
                     <input matInput formControlName="numero">
-                    <span *ngIf="!formulario.get('endereco.numero').valid && formulario.get('endereco.numero').touched"
-                        class="alert">numero é obrigatório </span>
-                    <!-- <span *ngIf="!numero.valid && numero.touched" class="alert">Nº é obrigatório</span> -->
-                </mat-form-field>
+                    <mat-error> Campo obrigatório</mat-error>
+                  </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>Rua</mat-label>
                     <input matInput formControlName="rua">
-                    <span *ngIf="!formulario.get('endereco.rua').valid && formulario.get('endereco.rua').touched"
-                        class="alert">rua é
-                        obrigatório </span>
-                    <!-- <span *ngIf="!rua.valid && rua.touched" class="alert">Rua é obrigatório</span> -->
+                    <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -57,9 +51,9 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Bairro</mat-label>
                     <input matInput formControlName="bairro">
-                    <span *ngIf="!formulario.get('endereco.bairro').valid && formulario.get('endereco.bairro').touched"
-                        class="alert">bairro é obrigatório </span>
-                    <!-- <span *ngIf="!bairro.valid && bairro.touched" class="alert">Bairro é obrigatório</span> -->
+                    <!-- <span *ngIf="!formulario.get('endereco.bairro').valid && formulario.get('endereco.bairro').touched"
+                        class="alert">bairro é obrigatório </span> -->
+                        <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -67,9 +61,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Cidade</mat-label>
                     <input matInput formControlName="cidade">
-                    <span *ngIf="!formulario.get('endereco.cidade').valid && formulario.get('endereco.cidade').touched"
-                        class="alert">cidade é obrigatório </span>
-                    <!-- <span *ngIf="!cidade.valid && cidade.touched" class="alert">Cidade é obrigatório</span> -->
+                    <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
 
@@ -80,9 +72,7 @@
                         <mat-option *ngFor="let estado of estados | async" [value]="estado.sigla">
                             {{ estado.nome}} </mat-option>
                     </mat-select>
-                    <span *ngIf="!formulario.get('endereco.estado').valid && formulario.get('endereco.estado').touched"
-                        class="alert">estado é obrigatório </span>
-                    <!-- <span *ngIf="!estado.valid && estado.touched" class="alert">Estado é obrigatório</span> -->
+                    <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
         </div>
@@ -121,18 +111,14 @@
         <section class="form-group">
             <mat-grid-tile>
                 <mat-checkbox class="example-margin" formControlName="termos">Aceito os termos.</mat-checkbox>
-                <!-- <span
-                    *ngIf="!formulario.get('termos').valid"
-                    class="alert">Nome é
-                    obrigatório.</span> -->
+                <mat-error *ngIf="!formulario.get('termos').valid"> Campo obrigatório!</mat-error>                       
             </mat-grid-tile>
         </section>
 
-        <mat-grid-tile class="checkbox" colspan="4"> 
-            <div class="checkbox"  formArrayName="frameworks"
+        <mat-grid-tile class="checkbox" colspan="4">
+            <div class="checkbox" formArrayName="frameworks"
                 *ngFor="let item of formulario.get('frameworks')['controls']; let i = index">
                 <mat-checkbox type="checkbox" [formControlName]="i"> {{ frameworks[i] }} </mat-checkbox>
-               
             </div>
             <span *ngIf="!formulario.get('frameworks').valid" class="alert"> Selecione uma opção.</span>
         </mat-grid-tile>
@@ -147,6 +133,6 @@
         <button class="btn btn-info" mat-raised-button color="accent" (click)="setarCargo()">Cargo</button>
         <button class="btn btn-info" mat-raised-button color="accent" (click)="setarTecnologias()">Tecnologias</button>
     </div>
-<!-- </mat-card-actions> -->
+    <!-- </mat-card-actions> -->
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>
