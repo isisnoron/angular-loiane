@@ -16,12 +16,22 @@
             </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Confirmar Email</mat-label>
+                <input matInput formControlName="confirmarEmail">
+                <mat-error *ngIf="formulario.get('confirmarEmail').hasError('equalsTo')"> Email não confere</mat-error>
+
+            </mat-form-field>
+        </mat-grid-tile>
+
         <div formGroupName="endereco">
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
                     <input matInput formControlName="cep" (blur)="consultaCEP()">
-                    <mat-error *ngIf="formulario.get('endereco.cep').hasError('required')"> Campo obrigatório</mat-error>
+                    <mat-error *ngIf="formulario.get('endereco.cep').hasError('required')"> Campo obrigatório
+                    </mat-error>
                     <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')" class="alert">CEP inválido.
                     </span>
 
