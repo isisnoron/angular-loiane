@@ -4,7 +4,11 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-                <mat-error> Campo obrigatório</mat-error>
+                <!-- <mat-error>Campo obrigatório</mat-error> -->
+
+                <!-- forma de validação de erro da loiane aula 112 -->
+                <app-error-msg class="alert" [control]="formulario.get('nome')" label="Nome"></app-error-msg>
+                
             </mat-form-field>
         </mat-grid-tile>
 
@@ -13,6 +17,7 @@
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
                 <mat-error *ngIf="formulario.get('email').hasError('emailInvalido')"> Email já cadastrado!</mat-error>
+                <mat-error *ngIf="formulario.get('email').status === 'VALID'"> Email válido!</mat-error>
                 <mat-error> Campo obrigatório</mat-error>                
             </mat-form-field>
         </mat-grid-tile>

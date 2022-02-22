@@ -42,7 +42,7 @@ export class DataFormComponent implements OnInit {
     this.newsletterOp = this.dropDownService.getNewsletter();
 
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(8)]],
       email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]],
       confirmarEmail: [null, [Validators.required, FormValidations.equalsTo('email')]],
 
@@ -63,6 +63,7 @@ export class DataFormComponent implements OnInit {
       frameworks: this.buildFrameworks()
     });
   }
+  
 
   buildFrameworks() {
     const values = this.frameworks.map(v => new FormControl(false))
@@ -162,5 +163,12 @@ export class DataFormComponent implements OnInit {
   validarEmail(formControl: FormControl) {
     return this.verificaEmailService.verificarEmail(formControl.value)
       .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
+  }
+
+  verificaValidTouched(campo: string) {
+    return (
+      !this.formulario.get(campo).valid &&
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+    );
   }
 }
