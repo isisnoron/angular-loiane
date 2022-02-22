@@ -34,7 +34,7 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.verificaEmailService.verificarEmail('').subscribe();
+    this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
     this.estados = this.dropDownService.getEstadoBr();
     this.cargos = this.dropDownService.getCargos();
@@ -43,8 +43,8 @@ export class DataFormComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      email: [null, [Validators.required, Validators.email]],
-      confirmarEmail: [null, [Validators.required, FormValidations.equalsTo('email')]], 
+      email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]],
+      confirmarEmail: [null, [Validators.required, FormValidations.equalsTo('email')]],
 
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValitador]],
@@ -75,9 +75,9 @@ export class DataFormComponent implements OnInit {
 
     valueSubmit = Object.assign(valueSubmit, {
       frameworks: valueSubmit.frameworks
-      .map((v:any, i:any) => v ? this.frameworks[i] : null)
-      .filter((v:any) => v !== null)
-            
+        .map((v: any, i: any) => v ? this.frameworks[i] : null)
+        .filter((v: any) => v !== null)
+
     })
 
     console.log(valueSubmit)
@@ -112,7 +112,6 @@ export class DataFormComponent implements OnInit {
   }
 
   consultaCEP() {
-
     const cep = this.formulario.get('endereco.cep').value;
 
     if (cep != null && cep !== '') {
@@ -158,5 +157,10 @@ export class DataFormComponent implements OnInit {
 
   setarTecnologias() {
     this.formulario.get('tecnologias').setValue(['java', 'php', 'ruby'])
+  }
+
+  validarEmail(formControl: FormControl) {
+    return this.verificaEmailService.verificarEmail(formControl.value)
+      .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
   }
 }

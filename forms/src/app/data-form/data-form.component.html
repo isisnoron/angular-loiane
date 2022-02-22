@@ -12,7 +12,8 @@
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
-                <mat-error> Campo obrigatório</mat-error>
+                <mat-error *ngIf="formulario.get('email').hasError('emailInvalido')"> Email já cadastrado!</mat-error>
+                <mat-error> Campo obrigatório</mat-error>                
             </mat-form-field>
         </mat-grid-tile>
 
