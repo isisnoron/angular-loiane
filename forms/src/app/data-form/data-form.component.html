@@ -35,7 +35,7 @@
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>CEP</mat-label>
-                    <input matInput formControlName="cep" (blur)="consultaCEP()">
+                    <input matInput formControlName="cep">
                     <mat-error *ngIf="formulario.get('endereco.cep').hasError('required')"> Campo obrigatório
                     </mat-error>
                     <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')" class="alert">CEP inválido.
