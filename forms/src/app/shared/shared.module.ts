@@ -4,20 +4,31 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
 import { DropdownService } from './services/dropdown.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
+import { InputFieldComponent } from './input-field/input-field.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [FormDebugComponent, ErrorMsgComponent],
+  declarations: [FormDebugComponent, ErrorMsgComponent, InputFieldComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FormDebugComponent,
-    ErrorMsgComponent
+    ErrorMsgComponent,
+    InputFieldComponent
   ],
-  providers:[DropdownService]
+  providers: [DropdownService]
 
 })
 export class SharedModule { }

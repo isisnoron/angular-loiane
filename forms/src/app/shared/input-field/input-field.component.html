@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill" class="full-width">
+    <mat-label [attr.for]="id" class="control-label">{{ label }}</mat-label>
+    <input required matInput class="form-control" [formControl]="controle" [id]="id" [readonly]="!!isReadOnly"
+        [(ngModel)]="value" (blur)="onTouch($event)">
+    <app-error-msg [control]="control" [label]="label"></app-error-msg>
+</mat-form-field>

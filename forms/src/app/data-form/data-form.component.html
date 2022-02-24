@@ -1,15 +1,22 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <mat-grid-list cols="4" rowHeight="3:1">
-        <mat-grid-tile>
-            <mat-form-field appearance="fill" class="full-width">
+        <!-- <mat-grid-tile> -->
+        <!-- <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome">
-                <!-- <mat-error>Campo obrigatório</mat-error> -->
+                <input matInput formControlName="nome"> -->
+        <!-- <mat-error>Campo obrigatório</mat-error> -->
 
-                <!-- forma de validação de erro da loiane aula 112 -->
-                <app-error-msg class="alert" [control]="formulario.get('nome')" label="Nome"></app-error-msg>
-                
+        <!-- forma de validação de erro da loiane aula 112 -->
+        <!-- <app-error-msg class="alert" [control]="formulario.get('nome')" label="Nome"></app-error-msg>
             </mat-form-field>
+        </mat-grid-tile> -->
+
+        <!-- campo imput customizado aula 112 -->
+        <mat-grid-tile>
+            <app-input-field class="col-sm-12" formControlName="nome" id="nome" label="Nome"
+                [control]="formulario.get('nome')">
+                <mat-error>Campo obrigatório</mat-error>
+            </app-input-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
@@ -18,7 +25,7 @@
                 <input matInput formControlName="email">
                 <mat-error *ngIf="formulario.get('email').hasError('emailInvalido')"> Email já cadastrado!</mat-error>
                 <mat-error *ngIf="formulario.get('email').status === 'VALID'"> Email válido!</mat-error>
-                <mat-error> Campo obrigatório</mat-error>                
+                <mat-error> Campo obrigatório</mat-error>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -113,8 +120,8 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <mat-label>Newsletter</mat-label>
             <mat-radio-group aria-label="Select an option" formControlName="newsletter">
+                <mat-label>Newsletter</mat-label><br>
                 <div *ngFor="let item of newsletterOp">
                     <mat-radio-button [value]="item.valor"> {{ item.desc}} </mat-radio-button>
                 </div>
