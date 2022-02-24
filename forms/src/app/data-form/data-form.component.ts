@@ -9,6 +9,7 @@ import { empty, Observable } from 'rxjs';
 import { FormValidations } from '../shared/services/form-validations';
 import { VerificaEmailService } from './services/verifica-email.service';
 import { BaseFormComponent } from '../shared/base-form/base-form.component';
+import { Cidade } from '../shared/models/cidade';
 
 @Component({
   selector: 'app-data-form',
@@ -18,7 +19,9 @@ import { BaseFormComponent } from '../shared/base-form/base-form.component';
 export class DataFormComponent extends BaseFormComponent implements OnInit {
 
   //formulario: any = FormGroup;
-  estados!: Observable<EstadosBr[]>
+  estados: EstadosBr[]
+  // estados!: Observable<EstadosBr[]>
+  cidades: Cidade[];
   cargos: any[] = [];
   tecnologias: any[] = [];
   newsletterOp: any[] = [];
@@ -39,7 +42,8 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
 
     //this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
-    this.estados = this.dropDownService.getEstadoBr();
+    //this.estados = this.dropDownService.getEstadoBr();
+    this.dropDownService.getEstadoBr().subscribe(dados => this.estados = dados);
     this.cargos = this.dropDownService.getCargos();
     this.tecnologias = this.dropDownService.getTecnologias();
     this.newsletterOp = this.dropDownService.getNewsletter();
@@ -76,6 +80,18 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
       )
       .subscribe((dados: any) => dados ? this.populaDadosForm(dados) : {}
       );
+
+    this.formulario.get('endereco.estado').valueChanges
+      .pipe(
+        tap(estado => console.log('Novo estado: ', estado)),
+        map(estado => this.estados.filter(e => e.sigla === estado)),
+        map((estados: any) => estados && estados.length > 0 ? estados[0].id : empty()),
+        switchMap((estadoId: number) => this.dropDownService.getCidades(estadoId)),
+        tap(console.log)
+      )
+      .subscribe((cidades: any) => this.cidades = cidades);
+
+    //this.dropDownService.getCidades(8).subscribe(console.log)
   }
 
   buildFrameworks() {

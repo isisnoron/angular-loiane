@@ -80,7 +80,10 @@
             <mat-grid-tile>
                 <mat-form-field appearance="fill">
                     <mat-label>Cidade</mat-label>
-                    <input matInput formControlName="cidade">
+                    <mat-select formControlName="cidade">
+                        <mat-option *ngFor="let cidade of cidades" [value]="cidade.nome">
+                            {{ cidade.nome}} </mat-option>
+                    </mat-select>
                     <mat-error> Campo obrigatório</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
@@ -89,7 +92,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Estado</mat-label>
                     <mat-select formControlName="estado">
-                        <mat-option *ngFor="let estado of estados | async" [value]="estado.sigla">
+                        <mat-option *ngFor="let estado of estados" [value]="estado.sigla">
                             {{ estado.nome}} </mat-option>
                     </mat-select>
                     <mat-error> Campo obrigatório</mat-error>
