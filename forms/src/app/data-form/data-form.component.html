@@ -120,8 +120,8 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <mat-radio-group aria-label="Select an option" formControlName="newsletter">
-                <mat-label>Newsletter</mat-label><br>
+                       <mat-radio-group aria-label="Select an option" formControlName="newsletter">
+                        <mat-label>Newsletter</mat-label><br>
                 <div *ngFor="let item of newsletterOp">
                     <mat-radio-button [value]="item.valor"> {{ item.desc}} </mat-radio-button>
                 </div>
