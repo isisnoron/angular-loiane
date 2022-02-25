@@ -1,0 +1,26 @@
+http://localhost:3000/cursos
+
+###
+http://localhost:3000/cursos/1
+
+
+###
+POST http://localhost:3000/cursos HTTP/1.1
+Content-Type: application/json
+Authorization: token xxx
+
+{
+    "nome": "Java"
+}
+
+###
+PUT http://localhost:3000/cursos/3 HTTP/1.1
+Content-Type: application/json
+Authorization: token xxx
+
+{
+    "nome": "Java 2"
+}
+
+### 
+DELETE http://localhost:3000/cursos/2
