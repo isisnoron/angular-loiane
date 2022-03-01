@@ -26,7 +26,7 @@ export class CursosFormComponent implements OnInit {
 
   ngOnInit() {
 
-    let registro: any = null;
+    //let registro: any = null;
 
     // this.route.params.subscribe((params: any) => {
     //   const id = params['id'];
@@ -40,22 +40,23 @@ export class CursosFormComponent implements OnInit {
 
     //console.log(registro);
 
-    this.route.params
-    .pipe(
-      map((params: any) => params['id']),
-      switchMap(id => this.service.loadById(id)),
-      // switchMap(cursos => obterAulas)
-    )
-    .subscribe(curso => this.updateForm(curso));
+    // this.route.params
+    // .pipe(
+    //   map((params: any) => params['id']),
+    //   switchMap(id => this.service.loadById(id)),
+    //   // switchMap(cursos => obterAulas)
+    // )
+    // .subscribe(curso => this.updateForm(curso));
 
     // concatMap -> ordem da requisiçao importa
     // mergeMap -> ordem nao importa
     // exhaustMap -> casos de login
 
+    const curso = this.route.snapshot.data['curso']
+
     this.form = this.fb.group({
-      id: [null],
-      nome: [
-        null,
+      id: [curso.id],
+      nome: [curso.nome,
         [
           Validators.required,
           Validators.minLength(3),
@@ -65,12 +66,12 @@ export class CursosFormComponent implements OnInit {
     });
   }
 
-  updateForm(curso: any){
-    this.form.patchValue({
-      id: curso.id,
-      nome: curso.nome
-    })
-  }
+  // updateForm(curso: any){
+  //   this.form.patchValue({
+  //     id: curso.id,
+  //     nome: curso.nome
+  //   })
+  // }
 
   hasError(field: string) {
     return this.form.get('nome')?.errors;
