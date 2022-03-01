@@ -25,7 +25,6 @@ export class CursosFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     //let registro: any = null;
 
     // this.route.params.subscribe((params: any) => {
@@ -52,11 +51,12 @@ export class CursosFormComponent implements OnInit {
     // mergeMap -> ordem nao importa
     // exhaustMap -> casos de login
 
-    const curso = this.route.snapshot.data['curso']
+    const curso = this.route.snapshot.data['curso'];
 
     this.form = this.fb.group({
       id: [curso.id],
-      nome: [curso.nome,
+      nome: [
+        curso.nome,
         [
           Validators.required,
           Validators.minLength(3),
@@ -82,15 +82,45 @@ export class CursosFormComponent implements OnInit {
     console.log(this.form.value);
     if (this.form.valid) {
       console.log('submit');
-      this.service.create(this.form.value).subscribe(
+
+      let msgSucesso = 'Curso criado com sucesso!';
+      let msgErro = 'Erro ao criar curso, tente novamente.';
+
+      if (this.form.value.id) {
+        msgSucesso = 'Curso atualizado com sucesso!';
+        msgErro = 'Erro ao atualizar curso, tente novamente.';
+      }
+
+      this.service.save(this.form.value).subscribe(
         (success) => {
-          this.modal.showAlertSuccess('Curso criado com sucesso!');
+          this.modal.showAlertSuccess(msgSucesso);
           this.location.back();
         },
-        (error) =>
-          this.modal.showAlertDanger('Erro ao criar curso, tente novamente.'),
-        () => console.log('request completo')
+        (error) => this.modal.showAlertDanger(msgErro)
       );
+
+      /*  if (this.form.value.id) {
+        //update
+        this.service.uptade(this.form.value).subscribe(
+          (success) => {
+            this.modal.showAlertSuccess('Curso criado com sucesso!');
+            this.location.back();
+          },
+          (error) =>
+            this.modal.showAlertDanger('Erro ao criar curso, tente novamente.'),
+          () => console.log('update completo')
+        );
+      } else {
+        this.service.create(this.form.value).subscribe(
+          (success) => {
+            this.modal.showAlertSuccess('Curso criado com sucesso!');
+            this.location.back();
+          },
+          (error) =>
+            this.modal.showAlertDanger('Erro ao criar curso, tente novamente.'),
+          () => console.log('request completo')
+        );
+      } */
     }
   }
 
