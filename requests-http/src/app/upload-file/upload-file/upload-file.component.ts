@@ -68,4 +68,18 @@ export class UploadFileComponent implements OnInit {
     console.log(`${this.files} foi destruído.`);
   }
 
+  onDownloadExcel() {
+    this.service.download(environment.BASE_URL + '/downloadExcel')
+    .subscribe((res: any) => {
+      this.service.handleFile(res, 'report.xlsx');
+    });
+  }
+
+  onDownloadPDF() {
+    this.service.download(environment.BASE_URL + '/downloadPDF')
+    .subscribe((res: any) => {
+      this.service.handleFile(res, 'report.pdf');
+    });
+  }
+
 }
